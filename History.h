@@ -18,12 +18,14 @@ private:
     static bool on_of;
     static bool clear;
 public:
+   // static ofstream file;
     History();
     static void setClear(bool clear);
     static void Save();
     static void setOnOf(bool onOf );
     static void PushBack(string command );
     static void Clear();
+    static void Show();
    // static ifstream file;
 };
 
