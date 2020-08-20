@@ -5,12 +5,14 @@
 #include "History.h"
 bool History::on_of = false;
 bool History::clear = false;
-ifstream file("history.txt");
+//ofstream History::file("history.txt");
 
 vector <string> History::history = {};
 
 History::History()
 {
+    //file.open("history.txt");
+
     on_of = 0;
     clear = 0;
 }
@@ -32,7 +34,7 @@ void History::PushBack(string command)
         if( clear == 1 )
         {
             history.clear();
-            file.clear();
+//            file.clear();
             history.push_back(command);
         }
         else
@@ -42,17 +44,35 @@ void History::PushBack(string command)
 void History::Clear()
 {
     history.clear();
+    fstream file;
+    file.open("history.txt", fstream::app);
     file.clear();
+    file.close();
 }
 
 void History::Save()
 {
+    fstream file;
+    if(!clear)
+    {
+        file.open("history.txt", fstream::app);
+    }
+    else
+        {
+           file.clear();
+           file.open("history.txt", fstream::out);
+        }
+
     for(string s:history)
     {
-        for(char c:s)
-        {
-            file.putback(c);
-        }
+       file<<s<<"\n";
     }
-
+    history.clear();
+}
+void History::Show()
+{
+    for(string s:history)
+    {
+        cout<<s<<"\n";
+    }
 }
