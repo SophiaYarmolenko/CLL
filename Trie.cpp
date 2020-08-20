@@ -92,3 +92,4 @@ void Trie::DoFunction(const string &s)
     fcnPtr1 = (*curr).fcnPtr;
     (*fcnPtr1)();
 }
+
