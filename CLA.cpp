@@ -15,6 +15,7 @@
 
 void CLA::help()
 {
+    PushBack(TimeToString()+" > help");
     cout<<
         "Commands:\n"
         "help - show instruction\n"//////////
@@ -33,31 +34,32 @@ void CLA::help()
 
 void CLA::quit()
 {
+    PushBack(TimeToString()+" > quit");
     exit(0);
 }
 
 void CLA::logOn()
 {
     setOnOf(1);
-    PushBack(TimeToString()+" > log on");
+    PushBack(TimeToString()+" > logOn");
 }
 
 void CLA::logOff()
 {
-   PushBack(TimeToString()+" > log off");
+   PushBack(TimeToString()+" > logOff");
    setOnOf(0);
 }
 
 void CLA::logAppend()
 {
-    PushBack(TimeToString()+" > log append");
+    PushBack(TimeToString()+" > logAppend");
     setClear(0);
 }
 
 void CLA::logNew()
 {
+    PushBack(TimeToString()+" > logNew");
     setClear(1);
-    PushBack(TimeToString()+" > log new");
 }
 void CLA::save()
 {
@@ -67,26 +69,33 @@ void CLA::save()
 
 void CLA::Exit()
 {
+    PushBack(TimeToString()+" > exit");
     Save();
     exit(0);
 }
 
 void CLA::load()
 {
-    WinExec(R"(C:\Users\Sophia\Desktop\CLL\history.txt)", SW_SHOWNORMAL);
+    PushBack(TimeToString()+" > load");
+    WinExec("\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" \"history.txt\"", SW_SHOWNORMAL);
+
 }
 
 void CLA::logFile()
 {
-    cout<<"C:\\Users\\Sophia\\Desktop\\CLL\\history.txt";
+    PushBack(TimeToString()+" > logFile");
+    cout<<"C:\\Users\\Sophia\\Desktop\\CLL\\cmake-build-debug\\history.txt";
 }
 
 void CLA::list()
 {
-    WinExec(R"(C:\Users\Sophia\Desktop\CLL\history.txt)", SW_SHOWNORMAL);
+    PushBack(TimeToString()+" > list");
+    Show();
+    //очніше через це:я переплутала
 }
 void CLA::logClearHistory()
 {
+    PushBack(TimeToString()+" > logClearHistory");
     Clear();
 }
 
@@ -103,3 +112,4 @@ string CLA::TimeToString()
     result << (time.tm_sec  < 10? "0": "") << time.tm_sec;
     return result.str();
 }
+
