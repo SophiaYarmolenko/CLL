@@ -4,7 +4,7 @@ Make an console interface that will execute the selected command and write the c
 ## Implementation:
 *    Create class CLA (command line analizator) that operate history and has function what we want to do
 *    Create class History, which manages all manipulation to history save
-*    Create [trie](https://en.wikipedia.org/wiki/Trie) that have all command name and pointers to functions what commands mean (it helps to do fast search)
+*    Create class with [trie](https://en.wikipedia.org/wiki/Trie) that have all command name and pointers to functions what commands mean (it helps to do fast search)
 ## Existing command
 *    ` help ` - show instructions
 *    ` quit ` - exit without save
